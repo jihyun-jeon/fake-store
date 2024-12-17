@@ -5,6 +5,7 @@ import pluginReact from 'eslint-plugin-react'
 import perfectionist from 'eslint-plugin-perfectionist'
 import noRelativeImportPaths from 'eslint-plugin-no-relative-import-paths'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import fsdArchitecture from 'eslint-plugin-feature-sliced-design-architecture'
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -17,10 +18,23 @@ export default [
   eslintPluginPrettierRecommended,
   {
     plugins: {
+      'feature-sliced-design-architecture': fsdArchitecture,
       'no-relative-import-paths': noRelativeImportPaths,
       perfectionist,
     },
     rules: {
+      'feature-sliced-design-architecture/layer-imports': [
+        'error',
+        { alias: '@' },
+      ],
+      'feature-sliced-design-architecture/path-checker': [
+        'error',
+        { alias: '@' },
+      ],
+      'feature-sliced-design-architecture/public-api-imports': [
+        'error',
+        { alias: '@' },
+      ],
       'no-relative-import-paths/no-relative-import-paths': [
         'warn',
         { allowSameFolder: false, prefix: '@', rootDir: 'src' },
