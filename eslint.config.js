@@ -1,41 +1,43 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
-import pluginReact from "eslint-plugin-react";
-import perfectionist from "eslint-plugin-perfectionist";
-import noRelativeImportPaths from "eslint-plugin-no-relative-import-paths";
+import globals from 'globals'
+import pluginJs from '@eslint/js'
+import tseslint from 'typescript-eslint'
+import pluginReact from 'eslint-plugin-react'
+import perfectionist from 'eslint-plugin-perfectionist'
+import noRelativeImportPaths from 'eslint-plugin-no-relative-import-paths'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 
-/** @type {import('eslint').Linter.Config[]} */
+/** @type {import("eslint").Linter.Config[]} */
 export default [
-  { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
+  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   pluginReact.configs.flat?.recommended,
-  pluginReact.configs.flat?.["jsx-runtime"],
+  pluginReact.configs.flat?.['jsx-runtime'],
+  eslintPluginPrettierRecommended,
   {
     plugins: {
-      "no-relative-import-paths": noRelativeImportPaths,
+      'no-relative-import-paths': noRelativeImportPaths,
       perfectionist,
     },
     rules: {
-      "no-relative-import-paths/no-relative-import-paths": [
-        "warn",
-        { allowSameFolder: false, prefix: "@", rootDir: "src" },
+      'no-relative-import-paths/no-relative-import-paths': [
+        'warn',
+        { allowSameFolder: false, prefix: '@', rootDir: 'src' },
       ],
-      "perfectionist/sort-interfaces": ["error"],
-      "perfectionist/sort-objects": [
-        "error",
+      'perfectionist/sort-interfaces': ['error'],
+      'perfectionist/sort-objects': [
+        'error',
         {
-          type: "alphabetical",
+          type: 'alphabetical',
         },
       ],
     },
     settings: {
       perfectionist: {
         partitionByComment: true,
-        type: "line-length",
+        type: 'line-length',
       },
     },
   },
-];
+]
