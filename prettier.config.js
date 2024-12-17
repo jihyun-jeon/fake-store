@@ -4,6 +4,7 @@
  */
 const config = {
   endOfLine: 'auto',
+  plugins: ['prettier-plugin-tailwindcss'],
   semi: false,
   singleQuote: true,
   tabWidth: 2,

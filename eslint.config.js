@@ -6,6 +6,7 @@ import perfectionist from 'eslint-plugin-perfectionist'
 import noRelativeImportPaths from 'eslint-plugin-no-relative-import-paths'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import fsdArchitecture from 'eslint-plugin-feature-sliced-design-architecture'
+import tailwind from 'eslint-plugin-tailwindcss'
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -16,6 +17,7 @@ export default [
   pluginReact.configs.flat?.recommended,
   pluginReact.configs.flat?.['jsx-runtime'],
   eslintPluginPrettierRecommended,
+  ...tailwind.configs['flat/recommended'],
   {
     plugins: {
       'feature-sliced-design-architecture': fsdArchitecture,
